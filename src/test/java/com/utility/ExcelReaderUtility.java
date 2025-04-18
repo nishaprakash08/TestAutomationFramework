@@ -1,8 +1,6 @@
 package com.utility;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,34 +15,42 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import com.ui.pojo.User;
 
 public class ExcelReaderUtility {
-public static Iterator<User> readExcelFile(String fileName) {
+	public static Iterator<User> readExcelFile(String fileName) {
 
-		File excelFile = new File(System.getProperty("user.dir")+ "//testData//"+fileName);
-		System.out.println(excelFile);
+		File xlsxFile = new File(System.getProperty("user.dir") + "//testData//" + fileName);
+
 		XSSFWorkbook xssfWorkbook = null;
-		List<User> userList = null;
 		Row row;
 		Cell emailAddressCell;
 		Cell passwordCell;
-		User user;XSSFSheet xssfSheet;
+		User user;
+		List<User> userList = null;
 		Iterator<Row> rowIterator;
+		XSSFSheet xssfSheet;
 		try {
-			xssfWorkbook = new XSSFWorkbook(excelFile);
-			userList= new ArrayList<User>();
-			xssfSheet=xssfWorkbook.getSheet("LoginTestData");
+			xssfWorkbook = new XSSFWorkbook(xlsxFile);
+			userList = new ArrayList<User>();
+			xssfSheet = xssfWorkbook.getSheet("LoginTestData");
 			rowIterator = xssfSheet.iterator();
 			rowIterator.next();
-			while(rowIterator.hasNext()) {
-				row=rowIterator.next();
-				emailAddressCell =row.getCell(0);
-				passwordCell =row.getCell(1);
-				user = new User(emailAddressCell.toString() , passwordCell.toString());
+			while (rowIterator.hasNext()) {
+				row = rowIterator.next();
+				emailAddressCell = row.getCell(0);
+				passwordCell = row.getCell(1);
+				user = new User(emailAddressCell.toString(), passwordCell.toString());
 				userList.add(user);
-			}
 				xssfWorkbook.close();
-			} catch (IOException | InvalidFormatException e) {
-				e.printStackTrace();
 			}
+
+		} catch (InvalidFormatException e) {
+
+			e.printStackTrace();
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+		
 		return userList.iterator();
+
 	}
 }

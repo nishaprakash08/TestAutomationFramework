@@ -9,34 +9,42 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-import com.constants.Env;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 import com.ui.pojo.User;
 
 public class CSVReaderUtility {
-	public static Iterator<User> readCSV(String fileName) {
-		FileReader filereader= null;
+
+	public static Iterator<User> readCSVFile(String fileName) {
+		File csvFile = new File(System.getProperty("user.dir") + "//testData//" + fileName);
+		FileReader fileReader = null;
 		CSVReader csvReader;
 		String[] line;
 		List<User> userList = null;
-		File csvFile = new File(System.getProperty("user.dir")+"//testData//"+fileName);
+		User userData;
 		try {
-			filereader = new FileReader(csvFile);
-			csvReader= new CSVReader(filereader);
+			fileReader = new FileReader(csvFile);
+			csvReader = new CSVReader(fileReader);
 			csvReader.readNext();
+
 			userList = new ArrayList<User>();
-			User userData;
-			while ((line= csvReader.readNext())!=null ) {
-				userData = new User(line[0],line[1]);
+
+			while ((line = csvReader.readNext()) != null) {
+				userData = new User(line[0], line[1]);
 				userList.add(userData);
 			}
+
 		} catch (FileNotFoundException e) {
+
 			e.printStackTrace();
 		}
-		catch (CsvValidationException |IOException e) {
+
+		catch (CsvValidationException | IOException e) {
+
 			e.printStackTrace();
 		}
-	return userList.iterator();
+		
+		return userList.iterator();
 	}
+
 }
