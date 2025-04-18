@@ -19,7 +19,7 @@ import com.ui.pojo.User;
 public class ExcelReaderUtility {
 public static Iterator<User> readExcelFile(String fileName) {
 
-		File excelFile = new File(System.getProperty("user.dir")+ "\\testData\\"+fileName);
+		File excelFile = new File(System.getProperty("user.dir")+ "//testData//"+fileName);
 		System.out.println(excelFile);
 		XSSFWorkbook xssfWorkbook = null;
 		List<User> userList = null;

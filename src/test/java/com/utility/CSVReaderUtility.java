@@ -20,7 +20,7 @@ public class CSVReaderUtility {
 		CSVReader csvReader;
 		String[] line;
 		List<User> userList = null;
-		File csvFile = new File(System.getProperty("user.dir")+"\\testData\\"+fileName);
+		File csvFile = new File(System.getProperty("user.dir")+"//testData//"+fileName);
 		try {
 			filereader = new FileReader(csvFile);
 			csvReader= new CSVReader(filereader);
