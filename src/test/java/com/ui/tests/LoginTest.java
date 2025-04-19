@@ -19,7 +19,7 @@ public class LoginTest extends TestBase {
 	public void loginTest(User user) {
 
 		assertEquals(homePage.goToLoginPage().doLoginWith(user.getEmailAddress(), user.getPassword()).getUserName(),
-				"Nisha Prakash");
+				"Nisha PRAKASH");
 	}
 
 	@Test(description = "Verifies with the valid user is able to login into the application", groups = { "e2e",
@@ -27,7 +27,7 @@ public class LoginTest extends TestBase {
 	public void loginCSVTest(User user) {
 
 		assertEquals(homePage.goToLoginPage().doLoginWith(user.getEmailAddress(), user.getPassword()).getUserName(),
-				"Nisha Prakash");
+				"Nisha PRAKASH");
 	}
 
 	@Test(description = "Verifies with the valid user is able to login into the application", groups = { "e2e",
