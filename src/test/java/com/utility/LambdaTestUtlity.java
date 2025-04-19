@@ -9,18 +9,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-public class LambdaTestUtility {
-	public static final String HUBURL = "https://hub.lambdatest.com/wd/hub";
-	private static ThreadLocal<WebDriver> driverLocal = new ThreadLocal<WebDriver>();
-	private static ThreadLocal<DesiredCapabilities> capabilitiesLocal = new ThreadLocal<DesiredCapabilities>(); 
+public class LambdaTestUtlity {
+	private static final String HUB_URL = "https://hub.lambdatest.com/wd/hub";
+	private static ThreadLocal<WebDriver> driverLocal = new ThreadLocal<WebDriver>();;
+	private static ThreadLocal<DesiredCapabilities> capabilitiesLocal = new ThreadLocal<DesiredCapabilities>();
 
-	public static WebDriver initializeLambaTestSession(String browser, String testName) {
+	public static WebDriver intializeLambdaTestSession(String browser, String testName) {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setCapability("browserName", browser	);
+		capabilities.setCapability("browserName", browser);
 		capabilities.setCapability("browserVersion", "127");
-		Map<String, Object> ltOptions = new HashMap<>();
-		ltOptions.put("user", "nisha2009prakash");
-		ltOptions.put("accessKey", "LT_ZuCAh8pPofdfG1Cj46qsOnw0tz74FdnHc34pWX3Y9IUiQAE");
+		Map<String, Object> ltOptions = new HashMap();
+		ltOptions.put("user", "jatintestautomationacademy");
+		ltOptions.put("accessKey", "zevQUy7S5LsXbkclaq4TvMbKDdCMFN7AeoNGvaaelLULXHPlJe");
 		ltOptions.put("build", "Selenium 4");
 		ltOptions.put("name", testName);
 		ltOptions.put("platformName", "Windows 10");
@@ -30,17 +30,19 @@ public class LambdaTestUtility {
 		capabilitiesLocal.set(capabilities);
 		WebDriver driver = null;
 		try {
-			driver = new RemoteWebDriver(new URL(HUBURL), capabilitiesLocal.get());
+			driver = new RemoteWebDriver(new URL(HUB_URL), capabilitiesLocal.get());
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		driverLocal.set(driver); 
+		
+		driverLocal.set(driver);
+
 		return driverLocal.get();
 	}
-	
+
 	public static void quitSession() {
-		if(driverLocal.get()!=null) {
+		if (driverLocal.get() != null) {
 			driverLocal.get().quit();
 		}
 	}

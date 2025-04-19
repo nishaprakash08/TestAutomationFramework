@@ -15,30 +15,33 @@ import com.ui.pojo.User;
 import com.utility.CSVReaderUtility;
 import com.utility.ExcelReaderUtility;
 
-
 public class LoginDataProvider {
 
-	@DataProvider(name ="LoginTestDataProvider")
-	public Iterator<Object[]>  loginDataProvider() throws FileNotFoundException {
+	@DataProvider(name = "LoginTestDataProvider")
+	public Iterator<Object[]> loginDataProvider() throws FileNotFoundException {
 		Gson gson = new Gson();
-		File testDataFile = new File(System.getProperty("user.dir")+"\\testData\\logindata.json");
-		FileReader filereader = new FileReader(testDataFile);
-		TestData data= gson.fromJson(filereader, TestData.class);
+		File testDataFile = new File(System.getProperty("user.dir") + "//testData//logindata.json");
+		FileReader fileReader = new FileReader(testDataFile);
+		TestData data = gson.fromJson(fileReader, TestData.class);// deserialization
+
 		List<Object[]> dataToReturn = new ArrayList<Object[]>();
-		for(User user :data.getData()) {
-			dataToReturn.add(new Object[] {user});
+		for (User user : data.getData()) {
+
+			dataToReturn.add(new Object[] { user });
 		}
+
 		return dataToReturn.iterator();
+
 	}
 
-	@DataProvider(name ="LoginTestCSVDataProvider")
+	@DataProvider(name = "LoginTestCSVDataProvider")
 	public Iterator<User> loginCSVDataProvider() {
-		return CSVReaderUtility.readCSV("loginData.csv");
+		return CSVReaderUtility.readCSVFile("loginData.csv");
 	}
-	
-	@DataProvider(name ="LoginTestExcelDataProvider")
+
+	@DataProvider(name = "LoginTestExcelDataProvider")
 	public Iterator<User> loginExcelDataProvider() {
-		return ExcelReaderUtility.readExcelFile("loginData.xlsx");
+		return ExcelReaderUtility.readExcelFile("LoginData.xlsx");
 	}
 
 }
