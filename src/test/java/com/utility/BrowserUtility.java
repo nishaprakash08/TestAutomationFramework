@@ -30,7 +30,7 @@ import com.constants.Browser;
 
 public class BrowserUtility {
 	private static ThreadLocal<WebDriver> driver = new ThreadLocal<WebDriver>();
-	private Logger logger = LoggerUtlity.getLogger(this.getClass());
+	private Logger logger = LoggerUtility.getLogger(this.getClass());
 	private WebDriverWait wait;
 
 	public WebDriver getDriver() {

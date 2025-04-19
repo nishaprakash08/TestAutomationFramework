@@ -16,7 +16,7 @@ public class AddNewFirstAddressTest extends TestBase {
 
 	@BeforeMethod(description = "Valid First Time user logs into the application")
 	public void setup() {
-		myAccountPage = homePage.goToLoginPage().doLoginWith("bakomam596@skrak.com", "password");
+		myAccountPage = homePage.goToLoginPage().doLoginWith("hecoxi2076@nokdot.com", "Password");
 		address = FakeAddressUtility.getFakeAddress();
 	}
 

@@ -1,6 +1,5 @@
 package com.utility;
 
-
 import java.util.Locale;
 
 import com.github.javafaker.Faker;

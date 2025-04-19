@@ -16,7 +16,7 @@ public class SearchProductTest extends TestBase {
 
 	@BeforeMethod(description = "Valid user logs into the application")
 	public void setup() {
-		myAccountPage = homePage.goToLoginPage().doLoginWith("hecoxi2076@nokdot.com", "password");
+		myAccountPage = homePage.goToLoginPage().doLoginWith("hecoxi2076@nokdot.com", "Password");
 	}
 
 	@Test(description = "Verify if the logged in user is able to search for a product and correct products search result are displayed", groups = {

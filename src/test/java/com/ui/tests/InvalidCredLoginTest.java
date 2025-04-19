@@ -6,15 +6,15 @@ import org.apache.logging.log4j.Logger;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import com.utility.LoggerUtlity;
+import com.utility.LoggerUtility;
 
 
 @Listeners({ com.ui.listeners.TestListener.class })
 public class InvalidCredLoginTest extends TestBase {
 
-	Logger logger = LoggerUtlity.getLogger(this.getClass());
-	private static final String INVALID_EMAIL_ADDRESS = "jatinvsharma@gmail.com";
-	private static final String INVALID_PASSWORD = "Qwerty1234!";
+	Logger logger = LoggerUtility.getLogger(this.getClass());
+	private static final String INVALID_EMAIL_ADDRESS = "nisha2009prakash@gmail.com";
+	private static final String INVALID_PASSWORD = "Test1234!";
 
 	@Test(description = "Verify if the proper error message is shown for the user when they enter invalid credentials ", groups = {
 			"e2e", "sanity", "smoke" })
