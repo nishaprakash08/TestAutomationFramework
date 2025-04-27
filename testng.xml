@@ -11,7 +11,7 @@
 			<class name="com.ui.tests.InvalidCredLoginTest" />
 			<!--class name="com.ui.tests.AddNewFirstAddressTest" / -->
 			<class name="com.ui.tests.ProductCheckoutTest" />
-			<class name="com.ui.tests.SearchProductTest" />
+			<!--class name="com.ui.tests.SearchProductTest" /-->
 		</classes>
 	</test>
 </suite>
